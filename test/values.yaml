@@ -1,0 +1,10 @@
+service:
+ name: test
+ port: 5678
+ targetPort: 5678
+test:
+  name: test
+  replicas: 2
+  image: benjjefferies/docker-helloworld-tcp-server
+  imagePullPolicy: IfNotPresent
+  containerPort: 5678
