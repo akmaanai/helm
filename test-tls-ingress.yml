@@ -16,7 +16,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: test
+            name: test-svc
             port:
               number: 5678
 
