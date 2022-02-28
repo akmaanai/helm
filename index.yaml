@@ -1,3 +1,21 @@
 apiVersion: v1
-entries: {}
-generated: "2022-02-28T20:41:48.624469801Z"
+entries:
+  robot-shop:
+  - apiVersion: v1
+    created: "2022-02-28T21:25:20.267808342Z"
+    description: Sample micoservices application
+    digest: 3fa050984923a1cbb7c65dd0c92c7f226fc9d7a17bbfa433b8ca97668606bc41
+    home: https://github.com/instana/robot-shop
+    name: robot-shop
+    urls:
+    - https://github.com/akmaanai/helm.git/robot-shop-1.1.0.tgz
+    version: 1.1.0
+  test:
+  - apiVersion: v1
+    created: "2022-02-28T21:25:20.268070887Z"
+    digest: 65843caff3b337a0b4e931aa9e2725a1cc30c1ac90065a40d45b3015d12feccf
+    name: test
+    urls:
+    - https://github.com/akmaanai/helm.git/test-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-02-28T21:25:20.266698753Z"
