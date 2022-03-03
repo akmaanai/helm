@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: roboto-shop
+  labels:
+    service: web
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
+spec:
+  tls:
+  - hosts:
+      - hedgehog.gq
+      - cart.hedgehog.gq
+    secretName: testcert-secret
+  rules:
+  - host: hedgehog.gq
+    http:
+      paths:
+      - path:  /
+        pathType: Prefix
+        backend:
+          service:
+            name: web
+            port:
+              number: 8080
+  - host: test.hedgehog.gq
+    http:
+      paths:
+      - path:  /
+        pathType: Prefix
+        backend:
+          service:
+            name: cart
+            port:
+              number: 8080
