@@ -1,0 +1,7 @@
+apiVersion: getambassador.io/v2
+kind: Mapping
+metadata:
+  name: client-mapping
+spec:
+  prefix: /
+  service: client-cluster-ip-service.default:3000

@@ -1,0 +1,12 @@
+apiVersion: getambassador.io/v2
+kind: TracingService
+metadata:
+  name: tracing
+spec:
+  service: "datadog-kube-state-metrics:8126"
+  driver: datadog
+  config:
+    service_name: ambassador.ambassador
+   
+
+

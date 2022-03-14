@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deployment
+  labels:
+    tags.datadoghq.com/env: "dev"
+    tags.datadoghq.com/service: "server-cluster-ip-service"
+    tags.datadoghq.com/version: "v1"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: server
+  template:
+    metadata:
+      labels:
+        component: server
+        tags.datadoghq.com/env: "dev"
+        tags.datadoghq.com/service: "server-cluster-ip-service"
+        tags.datadoghq.com/version: "v1"
+    spec:
+      containers:
+        - name: server
+          image: smz001/smile-server
+          ports:
+            - containerPort: 5000
+          env:
+            - name: PGUSER
+              value: postgres
+            - name: PGHOST
+              value: postgres-cluster-ip-service
+            - name: PGPORT
+              value: "5432"
+            - name: PGDATABASE
+              value: postgres
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD
+            - name: DD_AGENT_HOST
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: DD_ENV
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/env']
+            - name: DD_VERSION
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['tags.datadoghq.com/version']
+            - name: DD_LOGS_INJECTION
+              value: "true"
+            - name: DD_TRACE_SAMPLE_RATE
+              value: "1"
+            - name: DD_PROFILING_ENABLED
+              value: "true"
+    
