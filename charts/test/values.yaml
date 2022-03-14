@@ -1,6 +1,6 @@
 test:
   name: test
-  replicas: 3
+  replicas: 2
   image: benjjefferies/docker-helloworld-tcp-server
   imagePullPolicy: IfNotPresent
   containerPort: 5678
