@@ -67,6 +67,11 @@ envRaw:
    valueFrom:
      fieldRef:    
        fieldPath: status.hostIP
+ - name: DD_AGENT_HOST
+   valueFrom:
+     fieldRef:
+       fieldPath: status.hostIP
+
 # - name: POD_IP
 #   valueFrom:
 #     fieldRef:

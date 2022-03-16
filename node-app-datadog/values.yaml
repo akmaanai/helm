@@ -1,8 +1,10 @@
 targetSystem: "linux"
 site: "datadoghq.com"
 datadog:
-  apiKey: 1i;lk0b20f4367c160154b3e058ee21018a3
+  apiKey: 556f6dde69e3858cb965eaf460a4d8ee
   clusterChecks:
+    enabled: true
+  clusterAgent:
     enabled: true
   apm:
     portEnabled: true
